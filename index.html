@@ -3,27 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museu da Glória - Brasileirão eFootball</title>
+    <title>Hall da Fama - eFootball</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            
-            /* ========================================== */
-            /* AQUI É ONDE ADICIONAMOS A GALÁXIA! */
-            /* ========================================== */
-            
-            /* Passo 1: Defina uma cor escura de segurança (caso a imagem não carregue) */
             background-color: #05070a; 
-            
-            /* Passo 2: Coloque o caminho para a sua imagem de galáxia */
-            background-image: url('fundo-galaxia.jpg.jpeg'); /* <-- O nome do arquivo deve ser este */
-            
-            /* Passo 3: Ajustes para cobrir a tela inteira */
+            background-image: url('fundo-galaxia.jpg.jpeg'); 
             background-size: cover; 
             background-position: center; 
-            background-attachment: fixed; /* O fundo fica fixo ao rolar (efeito premium) */
+            background-attachment: fixed; 
             background-repeat: no-repeat;
-            
             color: white; 
             text-align: center; 
             padding: 20px; 
@@ -31,70 +20,124 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 950px; margin: auto; }
+        .container { max-width: 1000px; margin: auto; }
 
-        h1 { 
-            color: #00ff88; 
-            text-transform: uppercase; 
-            margin-bottom: 5px; 
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        /* SEÇÃO HEGEMÔNICO (TOPO) */
+        .hegemonico-section {
+            background: rgba(20, 20, 30, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid #f1c40f;
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 0 40px rgba(241, 196, 15, 0.3);
+        }
+
+        .hegemonico-titulo {
+            color: #f1c40f;
+            font-size: 2em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
             letter-spacing: 2px;
         }
 
-        /* HALL DA FAMA */
-        .hall-fama { margin-top: 50px; }
+        .hegemonico-sub {
+            color: #00ff88;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .podium-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .podium-foto-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 15px;
+        }
+
+        .podium-foto {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #f1c40f;
+            object-fit: cover;
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.6);
+            background: rgba(34, 34, 34, 0.8);
+        }
+
+        .podium-nome {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .podium-stats {
+            color: #f1c40f;
+            font-size: 1.1em;
+            font-weight: bold;
+            background: rgba(241, 196, 15, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        /* HALL DA FAMA (BAIXO) */
+        .hall-fama { margin-top: 40px; }
+        
+        .secao-titulo {
+            color: #00ff88;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            letter-spacing: 1px;
+        }
+
         .galeria { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
-            gap: 25px; 
-            margin-top: 30px; 
+            gap: 20px; 
+            margin-top: 25px; 
         }
 
-        /* CARDS ESTILO PREMIUM (GLASSMORPHISM) */
         .card { 
-            /* Fundo semi-transparente para ver a galáxia */
-            background: rgba(17, 17, 17, 0.6); 
-            
-            /* Efeito de desfoque no fundo (funciona nos navegadores modernos) */
+            background: rgba(17, 17, 17, 0.65); 
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Para Safari */
-            
-            /* Borda dourada sutil */
-            border: 1px solid rgba(241, 196, 15, 0.3); 
-            
-            padding: 25px; 
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 136, 0.2); 
+            padding: 20px; 
             border-radius: 20px; 
-            width: 170px; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 160px; 
+            transition: all 0.3s ease;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
-            position: relative;
-            overflow: hidden;
         }
-
-        /* Efeito de brilho ao passar o mouse */
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: -150%;
-            width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: 0.6s;
-        }
-
-        .card:hover::before { left: 150%; }
 
         .card:hover { 
-            transform: translateY(-12px) scale(1.02); 
-            border-color: #f1c40f;
-            box-shadow: 0 15px 45px rgba(241, 196, 15, 0.25); 
+            transform: translateY(-8px); 
+            border-color: #00ff88;
+            box-shadow: 0 12px 30px rgba(0, 255, 136, 0.2); 
         }
 
-        /* FOTO CIRCULAR DOS JOGADORES */
         .foto-container { 
             position: relative; 
-            width: 110px; 
-            height: 110px; 
+            width: 95px; 
+            height: 95px; 
             margin: auto; 
         }
         
@@ -102,95 +145,124 @@
             width: 100%; 
             height: 100%; 
             border-radius: 50%; 
-            border: 3px solid #f1c40f; 
+            border: 2.5px solid #00ff88; 
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(241, 196, 15, 0.3);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
             background: rgba(34, 34, 34, 0.8);
         }
 
         .nome { 
-            font-weight: 800; 
-            margin: 15px 0 5px; 
-            font-size: 1.1em; 
+            font-weight: 700; 
+            margin: 12px 0 8px; 
+            font-size: 1em; 
             color: #fff; 
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .trofeu-icon { 
-            color: #f1c40f; 
-            font-size: 1.5em; 
-            filter: drop-shadow(0 0 5px rgba(241, 196, 15, 0.5));
-            min-height: 1.6em; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
+        .medalhas-detalhe {
+            font-size: 0.8em;
+            color: #ccc;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 8px;
+            border-radius: 8px;
+            margin-top: 8px;
         }
 
-        .sem-trofeu { 
-            color: #aaa; /* Cor mais clara para ler melhor na galáxia */
-            font-size: 0.8em; 
-            text-transform: lowercase;
-            font-style: italic; 
+        .medalhas-detalhe div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
         }
 
-        hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 60px 0; }
+        hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 40px 0; }
     </style>
 </head>
-<body>
+<body onload="carregarTudo()">
 
 <div class="container">
-    <h1>🏆 Brasileirão eFootball</h1>
-    <p style="color: #00ff88; font-weight: bold; opacity: 0.8; margin-bottom: 30px;">Temporada Atual: Abril 2026</p>
+
+    <!-- PARTE DE CIMA: SUPER RANKING HEGEMÔNICO -->
+    <div class="hegemonico-section">
+        <div class="hegemonico-titulo">👑 Super Ranking Hegemônico</div>
+        <div class="hegemonico-sub">O Maior Campeão Geral de Todos os Tempos</div>
+        <div id="hegemonico-conteudo">
+            <!-- Calculado via JavaScript -->
+        </div>
+    </div>
 
     <hr>
 
+    <!-- PARTE DE BAIXO: HALL DA FAMA (TÍTULOS POR CATEGORIA) -->
     <div class="hall-fama">
-        <h1 style="color: #f1c40f; font-size: 2.5em; margin-bottom: 0;">👑 HALL DA FAMA</h1>
-        <p style="color: #aaa; letter-spacing: 3px; font-size: 0.8em; margin-top: 5px; text-transform: uppercase;">(Histórico de Campeões)</p>
+        <div class="secao-titulo">🏆 Hall da Fama</div>
+        <p style="color: #aaa; letter-spacing: 2px; font-size: 0.8em; margin-top: 5px; text-transform: uppercase;">Contagem Separada por Competição</p>
         
         <div class="galeria" id="galeria"></div>
     </div>
+
 </div>
 
 <script>
     // ==========================================
-    // LISTA DE JOGADORES ATUALIZADA
+    // DADOS DOS JOGADORES E SUAS CONQUISTAS
+    // 🏆 Championship | 🏅 eFootball League | 🎖 Cariocão eFootball
     // ==========================================
-    const campeoes = [
-        { nome: "Vitor90show", trofeus: 1, foto: "vitor90.jpg.jpeg" },
-        { nome: "VitinhoRJ", trofeus: 3, foto: "vitinho.jpg.jpeg" },
-        { nome: "bringmetheorizo", trofeus: 1, foto: "scarllxd.jpg.jpeg" },
-        { nome: "EoLuckyzinJr", trofeus: 3, foto: "luckzin.jpg.jpeg" },
-        { nome: "Bened", trofeus: 0, foto: "bened.jpg.jpeg" },
-        { nome: "FPETOP", trofeus: 1, foto: "fpetop.jpg" },
-        { nome: "W7masterzz", trofeus: 0, foto: "w7masterzz.jpg" }
+    const jogadores = [
+        { nome: "Vitor90show", foto: "vitor90.jpg.jpeg", champ: 0, efl: 1, cario: 0 },
+        { nome: "VitinhoRJ", foto: "vitinho.jpg.jpeg", champ: 1, efl: 1, cario: 1 },
+        { nome: "bringmetheorizo", foto: "scarllxd.jpg.jpeg", champ: 1, efl: 0, cario: 0 },
+        { nome: "EoLuckyzinJr", foto: "luckzin.jpg.jpeg", champ: 1, efl: 1, cario: 1 },
+        { nome: "Bened", foto: "bened.jpg.jpeg", champ: 0, efl: 0, cario: 0 },
+        { nome: "W7masterzz", foto: "w7masterzz.jpg", champ: 0, efl: 0, cario: 0 }
     ];
 
-    function carregarGaleria() {
-        const div = document.getElementById('galeria');
-        div.innerHTML = ""; 
+    function carregarTudo() {
+        // 1. CALCULAR O HEGEMÔNICO (QUEM TEM MAIS TÍTULOS TOTAIS)
+        let rankingHegemonico = jogadores.map(j => {
+            let total = j.champ + j.efl + j.cario;
+            return { ...j, totalTítulos: total };
+        });
+
+        // Ordena do maior para o menor número de títulos
+        rankingHegemonico.sort((a, b) => b.totalTítulos - a.totalTítulos);
+        let hegemonico = rankingHegemonico[0]; // O primeiro lugar geral
+
+        // Exibe o Hegemônico no topo
+        const divHeg = document.getElementById('hegemonico-conteudo');
+        divHeg.innerHTML = `
+            <div class="podium-card">
+                <div class="podium-foto-container">
+                    <img src="${hegemonico.foto}" class="podium-foto" onerror="this.src='https://via.placeholder.com/130/222/f1c40f?text=TOP';">
+                </div>
+                <div class="podium-nome">${hegemonico.nome}</div>
+                <div class="podium-stats">🔥 Total de Títulos: ${hegemonico.totalTítulos}</div>
+            </div>
+        `;
+
+        // 2. CARREGAR O HALL DA FAMA (CARDS INDIVIDUAIS)
+        const divGaleria = document.getElementById('galeria');
+        divGaleria.innerHTML = ""; 
         
-        campeoes.forEach(c => {
-            let icones = "🏆".repeat(c.trofeus);
+        jogadores.forEach(j => {
+            let total = j.champ + j.efl + j.cario;
             
-            if(c.trofeus === 0) {
-                icones = '<span class="sem-trofeu">Nenhum título</span>';
-            }
-            
-            div.innerHTML += `
+            divGaleria.innerHTML += `
                 <div class="card">
                     <div class="foto-container">
-                        <img src="${c.foto}" class="foto" onerror="this.src='https://via.placeholder.com/110/222/f1c40f?text=PLAYER';">
+                        <img src="${j.foto}" class="foto" onerror="this.src='https://via.placeholder.com/95/222/00ff88?text=PLAYER';">
                     </div>
-                    <div class="nome">${c.nome}</div>
-                    <div class="trofeu-icon">${icones}</div>
+                    <div class="nome">${j.nome}</div>
+                    <div class="medalhas-detalhe">
+                        <div><span>🏆 Champ:</span> <b>${j.champ}</b></div>
+                        <div><span>🏅 eFL:</span> <b>${j.efl}</b></div>
+                        <div><span>🎖 Cario:</span> <b>${j.cario}</b></div>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; padding-top: 4px; color: #f1c40f;"><span>Total:</span> <b>${total}</b></div>
+                    </div>
                 </div>
             `;
         });
     }
-    carregarGaleria();
 </script>
 
 </body>
